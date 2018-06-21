@@ -1,0 +1,115 @@
+{
+	"div": {
+		"prefix": "di",
+		"body": [
+			"<div>",
+			"\t$1",
+			"</div>"
+		],
+		"description": "div tag"
+	},
+	"const":{
+		"prefix": "c",
+		"body": [
+			"const $1",
+			"$0"
+		],
+		"description": "const"
+	},
+	"p":{
+		"prefix": "p",
+		"body": [
+			"<p>$1</p>",
+			"$0"
+		],
+		"description": "p"
+	},
+	"ul":{
+		"prefix": "ul",
+		"body": [
+			"<ul>",
+			"\t{${1:list}.map(item=>{<li>{${2:list.name}}</li>})}",
+			"</ul>"
+		],
+		"description": "ul for react"
+	},
+	"form":{
+		"prefix": "fo",
+		"body": [
+			"<form onSubmit={$1}>",
+			"\t$0",
+			"\t<button type=\"submit\" value=\"OK\"/>",
+			"</form>"
+		],
+		"description": "form"
+	},
+	"functional component":{
+		"prefix": "fc",
+		"body": [
+			"import React from 'react';",
+			"import {connect} from 'react-redux';",
+			"",
+			"const ${1:functionname} =(props)=>{",
+			"\tconst {",
+			"\t\t${2:state and dispatch}",
+			"\t}=props;",
+			"return(",
+			"\t<div>",
+			"\t\t$0",
+			"\t</div>",
+			"\t)",
+			"}",
+			"",
+			"function mapStateToProps(state){",
+			"\treturn{",
+			"\t\t$3",
+			"\t}",
+			"}",
+			"",
+  			"function mapDispatchToProps(dispatch){",
+			"\treturn{",
+			"\t\t${4:actionname}()=>{",
+			"\t\t\tdispatch(${4:actioncreater})",
+			"\t\t}",
+			"\t}",
+			"}",
+			"",
+			"export default connect(mapStateToProps,mapDispatchToProps)($1);"
+		],
+		"description": "functional component"
+	},
+	"reducer":{
+		"prefix": "red",
+		"body": [
+			"const initialState = {",
+			"\t$1",
+			"}",
+			"",
+			"export default $1Reducer=(state=initialState,action)=>{",
+			"\tswitch(action.type){",
+			"\t\tcase ${2:actiontype}:",
+			"\t\t\treturn{",
+			"\t\t\t\t...state,",
+			"\t\t\t\t${3:state:state.}",
+			"\t\t\t}",
+			"\t\tdefault:",
+			"\t\t\treturn state;",
+			"\t}",
+			"}"
+		]
+	},
+	"action":{
+		"prefix": "act",
+		"body":[
+			"export const ${1:name}=()=>{",
+			"\treturn({",
+			"\t\ttype:${2:actiontype}",
+			"\t\tpayload:{",
+			"\t\t\t$0",
+			"\t\t}",
+			"\t})",
+			"}"
+		],
+		"description": "action"
+	}
+}
